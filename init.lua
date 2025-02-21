@@ -1,7 +1,8 @@
 -- Simple registration function for minetest_game
 function register_stair_and_slab_simple(subname, sourcenode, desc_stair, desc_slab, desc_double_slab, corner_stair_texture_override)
     local def = minetest.registered_nodes[sourcenode]
-    local groups = def.groups or {}
+    local groups = table.copy(def.groups or {})
+    groups.wool = nil
     local tiles = def.tiles or {sourcenode .. ".png"}
     local sounds = def.sounds or default.node_sound_defaults()
 
